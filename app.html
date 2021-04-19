@@ -66,42 +66,48 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <label for="">Number to find:</label>
                     <input type="number" name="" id="k">
                 </div>
                 <div class="col">
                     <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                        autocomplete="off" id="sumBtn" >Press to find!</button>
+                        autocomplete="off" id="sumBtn">Press to find!</button>
                 </div>
+            </div>
+            <div class="row">
+
                 <div class="col">
-                    <div class="form-group">
-                        <label for="">Edit array</label>
-                        <div class="form-group">
-                            <input type="number" class="form-control" name="" id="numIn" aria-describedby="helpId"
-                            placeholder="Input goes here">
-                            <button type="button" class="btn btn-primary btn-block" id="addBtn">Add Number to list</button>
-                            <button type="button" class="btn btn-warning btn-block" id="resetBtn">Reset list to sample List</button>
-                            <button type="button" class="btn btn-danger btn-block" id="clearArray">Clear Array</button>
-                        </div>
-                        <small id="helpId" class="form-text text-muted">sample array is [93, 57, 44, 14, 32, 37, 25, 5,
-                            4, 30, 80, 18, 40, 55, 84, 10, 27, 79, 39, 9]</small>
-                    </div>
+                    <input type="number" class="form-control" name="" id="numIn" aria-describedby="helpId"
+                        placeholder="Input goes here">
+                    <small class="form-text text-muted">Input new number above</small>
+                </div>
+                <div class="col"><button type="button" class="btn btn-primary btn-block" id="addBtn">Add Number to
+                        list</button></div>
+                <div class="col "><button type="button" class="btn btn-warning btn-block" id="resetBtn">Reset list to
+                        sample List</button></div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger btn-block" id="clearArray">Clear Array</button>
+                    <small id="helpId" class="form-text text-muted">sample array is [93, 57, 44, 14, 32, 37, 25, 5,
+                        4, 30, 80, 18, 40, 55, 84, 10, 27, 79, 39, 9]</small>
+
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col">
-                    <ul id="outlist">
-                        
-                        <h3 id="output"></h3>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul id="numlist">
-                        <h3 >List of numbers:</h3>
-                        
-                    </ul>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul id="outlist">
+
+                    <h3 id="output"></h3>
+                </ul>
             </div>
+            <div class="col">
+                <ul id="numlist">
+                    <h3>List of numbers:</h3>
+
+                </ul>
+            </div>
+        </div>
         </div>
 
     </main>
@@ -128,14 +134,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="/js/app.js"></script>
     <script>
-    document.getElementById("sumBtn").addEventListener("click", sumTheFears)
-    document.getElementById("resetBtn").addEventListener("click", resetArray)
-    document.getElementById("clearArray").addEventListener("click", clearArray)
-    document.getElementById("addBtn").addEventListener("click", addToArray)
+        document.getElementById("sumBtn").addEventListener("click", sumTheFears)
+        document.getElementById("resetBtn").addEventListener("click", resetArray)
+        document.getElementById("clearArray").addEventListener("click", clearArray)
+        document.getElementById("addBtn").addEventListener("click", addToArray)
     </script>
 </body>
 
