@@ -75,6 +75,7 @@ function displayData(result){
         document.getElementById("output").innerHTML = "<h3 id=\"output\">False</h3>"
         return
     }
+    confetti.start(1000)
     document.getElementById("outlist").innerHTML = "<h3 id=\"output\">True</h3>"
     for (let i = 0; i < result.length; i++) {
         const equation = document.importNode(template.content, true)
