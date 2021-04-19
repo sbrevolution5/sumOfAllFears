@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-
+    <link rel="stylesheet" href="css/prism.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -56,9 +56,92 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-        <h1 class="mt-5">Code explanation</h1>
-        <p class="lead">Explanation of how code works</p>
-        <p>There's more description down here!</p>
+        <pre class="line-numbers"><code class="language-javascript">function checkList(list, k){
+    let res = []
+    for (let i = 0; i < list.length-1; i++) {
+        for (let j = i+1; j < list.length; j++) {
+            if(list[i]+list[j] == k){
+                res.push([list[i],list[j]])
+            }
+        }
+        
+    }
+    if (res == []){
+        return false
+    }
+    return res;
+}
+function sumTheFears(){
+    let k = parseInt(document.getElementById("k").value)
+    if (isNaN(k)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: 'You didn\'t input a number!'
+        })
+    }
+    let numbers = JSON.parse(localStorage.getItem("userArray"))||[93, 57, 44,14,32,37,25,5,4,30,80,18,40,55,84,10,27,79,39,9]
+    let answer = checkList(numbers, k)
+    displayData(answer)
+}
+function loadPage(){
+    let data = JSON.parse(localStorage.getItem("userArray")) || [93, 57, 44, 14, 32, 37, 25, 5, 4, 30, 80, 18, 40, 55, 84, 10, 27, 79, 39, 9]
+    displayList(data)
+    
+}
+function addToArray(){
+    let newElement = parseInt(document.getElementById("numIn").value)
+    if(isNaN(newElement)){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: 'You didn\'t input a number!'
+        })
+    }
+    document.getElementById("numIn").value = ""
+    let array = JSON.parse(localStorage.getItem("userArray"))
+    array.push(newElement)
+    localStorage.setItem("userArray", JSON.stringify(array))
+    displayList(array)
+}
+function resetArray(){
+    let defList = [93, 57, 44, 14, 32, 37, 25, 5, 4, 30, 80, 18, 40, 55, 84, 10, 27, 79, 39, 9]
+    localStorage.setItem("userArray",JSON.stringify(defList))
+    displayList(defList)
+}
+function clearArray(){
+    
+    localStorage.setItem("userArray", JSON.stringify([]))
+    displayList([])
+}
+function displayList(list){
+    document.getElementById("numlist").innerHTML = ""
+    document.getElementById("numlist").innerHTML = "<h3>List of numbers:</h3>"
+    template = document.getElementById("itemTemplate")
+
+    for (let i = 0; i < list.length; i++) {
+        const listItem = document.importNode(template.content,true)
+        listItem.getElementById("item").innerText = list[i]
+        document.getElementById("numlist").appendChild(listItem)
+    }
+}
+function displayData(result){
+    template = document.getElementById("itemTemplate")
+    if (result == false){
+        document.getElementById("output").innerHTML = "<h3 id=\"output\">False</h3>"
+        return
+    }
+    document.getElementById("outlist").innerHTML = "<h3 id=\"output\">True</h3>"
+    for (let i = 0; i < result.length; i++) {
+        const equation = document.importNode(template.content, true)
+        equation.getElementById("item").innerText = `${result[i][0]} + ${result[i][1]}`
+        document.getElementById("outlist").appendChild(equation)
+        
+    }
+}
+loadPage()</code></pre>
 
     </main>
 
@@ -80,6 +163,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="js/prism.js"></script>
 </body>
 
 </html>
